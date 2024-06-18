@@ -1,0 +1,10 @@
+code: null
+hologram-location: world,5008.5,126.0,4981.5
+server-name: TheGoodBoys
+database:
+  type: mysql
+  ip: localhost
+  port: 3306
+  username: root
+  password: 123456
+  database: megawalls

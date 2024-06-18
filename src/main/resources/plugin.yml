@@ -1,0 +1,23 @@
+name: MegaWallsLobby
+version: 2.4.5-SNAPSHOT
+main: cn.infnetwork.megawallslobby.MegaWallsLobby
+depend: [ HolographicDisplays ]
+commands:
+  mp:
+    description: MegaWalls plugin command
+    permission: MegaWalls.default
+permissions:
+  MegaWalls.coins:
+    default: op
+  MegaWalls.classes:
+    default: op
+  MegaWalls.autoaccept:
+    default: op
+  MegaWalls.hologrameffect.Default:
+    default: true
+  MegaWalls.killmessage.Default:
+    default: true
+  MegaWalls.admin:
+    default: op
+  MegaWalls.default:
+    default: true
