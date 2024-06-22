@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.event.Listener;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class Classes implements Listener {
@@ -24,6 +25,7 @@ public abstract class Classes implements Listener {
     private Difficulty difficulty;
     private EquipmentPackage equipmentPackage;
     private ClassesSkin defaultSkin;
+    private ClassesSkin prestigeSkin;
 
     public Classes(String name, String displayName, ChatColor nameColor, Material iconType, byte iconData, ClassesType classesType, Orientation[] orientations, Difficulty difficulty) {
         this.name = name;
@@ -37,7 +39,11 @@ public abstract class Classes implements Listener {
     }
 
     public void setDefaultSkin(String value, String signature) {
-        this.defaultSkin = new ClassesSkin("Default", this.getDisplayName(), Arrays.asList("§7" + this.getDisplayName() + "的默认皮肤"), value, signature,null);
+        this.defaultSkin = new ClassesSkin("Default", this.getDisplayName(), Collections.singletonList("§7" + this.getDisplayName() + "的默认皮肤"), value, signature);
+    }
+
+    public void setPrestigeSkin(String value, String signature) {
+        this.prestigeSkin = new ClassesSkin("Prestige", this.getDisplayName(), Collections.singletonList("§7" + this.getDisplayName() + "的精通皮肤"), value, signature);
     }
 
     public int energyMelee() {
@@ -126,5 +132,9 @@ public abstract class Classes implements Listener {
 
     public ClassesSkin getDefaultSkin() {
         return this.defaultSkin;
+    }
+
+    public ClassesSkin getPrestigeSkin() {
+        return prestigeSkin;
     }
 }

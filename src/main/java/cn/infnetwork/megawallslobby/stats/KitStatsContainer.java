@@ -26,6 +26,7 @@ public class KitStatsContainer {
     private int enderChest;
     private int masterPoints;
     private boolean enableGoldTag;
+    private boolean PrestigeSkin;
     private long playTime;
     private JsonObject inventory;
 
@@ -92,6 +93,11 @@ public class KitStatsContainer {
     public void addEnderChest() {
         ++this.enderChest;
         database.dbUpdate("classes_" + this.classes.getName(), new KeyValue("enderChest", this.enderChest), new KeyValue("uuid", this.gamePlayer.getUuid().toString()));
+    }
+
+    public void setPrestigeSkin(boolean PrestigeSkin) {
+        this.PrestigeSkin = PrestigeSkin;
+        database.dbUpdate("classes_" + this.classes.getName(), new KeyValue("PrestigeSkin", String.valueOf(PrestigeSkin)), new KeyValue("uuid", this.gamePlayer.getUuid().toString()));
     }
 
     public void giveMasterPoints(int amount) {
@@ -244,6 +250,10 @@ public class KitStatsContainer {
 
     public boolean isEnableGoldTag() {
         return this.enableGoldTag;
+    }
+
+    public boolean isPrestigeSkin() {
+        return PrestigeSkin;
     }
 
     public void setEnableGoldTag(boolean enableGoldTag) {

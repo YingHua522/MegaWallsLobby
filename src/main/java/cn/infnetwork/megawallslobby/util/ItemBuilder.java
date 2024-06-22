@@ -1,5 +1,7 @@
 package cn.infnetwork.megawallslobby.util;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -12,10 +14,8 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.*;
 import java.util.Map.Entry;
 
 public class ItemBuilder {
@@ -51,6 +51,29 @@ public class ItemBuilder {
         meta.spigot().setUnbreakable(unbreakable);
         this.itemStack.setItemMeta(meta);
         return this;
+    }
+
+
+    public ItemBuilder setSkullSkin(String skinValue) {
+        if (this.itemStack.getType() != Material.SKULL_ITEM) {
+            throw new IllegalArgumentException("Event item not skull.");
+        } else {
+            SkullMeta skullMeta = (SkullMeta)this.itemStack.getItemMeta();
+            GameProfile profile = new GameProfile(UUID.randomUUID(), (String)null);
+            profile.getProperties().put("textures", new Property("textures", skinValue));
+
+            try {
+                Field field = skullMeta.getClass().getDeclaredField("profile");
+                field.setAccessible(true);
+                field.set(skullMeta, profile);
+            } catch (IllegalAccessException | NoSuchFieldException var5) {
+                ReflectiveOperationException e = var5;
+                e.printStackTrace();
+            }
+
+            this.itemStack.setItemMeta(skullMeta);
+            return this;
+        }
     }
 
     public ItemBuilder setDisplayName(String name) {

@@ -1,9 +1,7 @@
 package cn.infnetwork.megawallslobby.command;
 
-import cn.infnetwork.megawallslobby.classes.ClassesManager;
 import cn.infnetwork.megawallslobby.game.GamePlayer;
 import cn.infnetwork.megawallslobby.inventory.InventoryManager;
-import cn.infnetwork.megawallslobby.inventory.SkinMenu;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -29,7 +27,7 @@ public class CommandSkin extends BaseCommand{
         Player player = (Player) sender;
         GamePlayer gamePlayer = GamePlayer.get(player.getUniqueId());
         if (gamePlayer != null) {
-            SkinMenu.createSkinSelectionMenu(ClassesManager.getSelected(gamePlayer), InventoryManager.SHOPMENU, gamePlayer).open(player);
+            InventoryManager.SKINMENU.open(player);
         }
         return true;
     }
