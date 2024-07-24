@@ -84,7 +84,7 @@ public class ClassesManager {
             registerClasses(new Snowman());
             registerClasses(new Automaton());
             registerClasses(new Shark());
-            //registerClasses(new Random());
+            registerClasses(new Shark());
             registered = true;
         }
     }
