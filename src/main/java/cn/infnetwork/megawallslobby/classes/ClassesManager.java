@@ -2,6 +2,7 @@ package cn.infnetwork.megawallslobby.classes;
 
 import cn.infnetwork.megawallslobby.classes.mythic.assassin.Assassin;
 import cn.infnetwork.megawallslobby.classes.mythic.automaton.Automaton;
+import cn.infnetwork.megawallslobby.classes.mythic.dragon.Dragon;
 import cn.infnetwork.megawallslobby.classes.mythic.lawless.Lawless;
 import cn.infnetwork.megawallslobby.classes.mythic.mole.Mole;
 import cn.infnetwork.megawallslobby.classes.normal.oldspider.OldSpider;
@@ -84,7 +85,7 @@ public class ClassesManager {
             registerClasses(new Snowman());
             registerClasses(new Automaton());
             registerClasses(new Shark());
-            registerClasses(new Shark());
+            registerClasses(new Dragon());
             registered = true;
         }
     }
